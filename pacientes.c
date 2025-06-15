@@ -20,3 +20,81 @@ void removerNovaLinha(char * str)
         str[len - 1] = '\0';
     }
 }
+
+void _exibirDadosPaciente(paciente *p_a)
+{
+    if (p_a == NULL) {
+        printf("Referencia de paciente nula... \n");
+        return;
+    }
+    printf("\n-----------------------------\n");
+    printf("ID: %d \n", p_a->ID);
+    printf("Nome Paciente: %s \n", p_a->NOMEp);
+    printf("Idade do paciente: %d \n", p_a->IDADE);
+    printf("Nome Tutor: %s \n", p_a->NOMEt);
+    printf("Raca: %s \n", p_a->RACA);
+    printf("Especie: %s \n", p_a->ESPECIE);
+    printf("Telefone para contato: %d \n", p_a->TELEFONE);
+    printf("-----------------------------\n");
+}
+
+void inicializaPacientes()
+{
+    for (int i=0; i<MAX_Pacientes; i++) {
+        pacientes[i] = NULL;
+    }
+}
+
+//cadastrar novo paciente
+void cadastrarPaciente()
+{
+    int i = 0;
+    int posicao = -1;
+    for (i=0; i<MAX_Pacientes;i++) {
+        if (pacientes[i] == NULL) {
+            posicao = i;
+            break;
+        }
+    }
+    if (posicao == -1) {
+        printf("Nao ha espaco na memoria para mais pacientes\n");
+        return;
+    }
+
+    pacientes[posicao] =(paciente*) malloc(sizeof(paciente));
+    if (pacientes[posicao] == NULL) {
+        printf("Alocacao invalida\n");
+        return;
+    }
+
+    printf("Cadastrando novo na aluno na posicao %d do vetor: \n", posicao);
+    //Leitura do id
+    printf("Digite o numero do ID do paciente: \n");
+    scanf("%d", &pacientes[posicao]->ID);
+    limparBufferEntrada();
+
+    printf("Digite o nome do paciente: \n");
+    fgets(pacientes[posicao]->NOMEp, sizeof(pacientes[posicao]->NOMEp), stdin);
+    removerNovaLinha(pacientes[posicao]->NOMEp);
+
+    printf("Digite a idade do paciente: \n");
+    scanf("%d", &pacientes[posicao]->IDADE);
+
+    printf("Digite o nome do tutor: \n");
+    fgets(pacientes[posicao]->NOMEt, sizeof(pacientes[posicao]->NOMEt), stdin);
+    removerNovaLinha(pacientes[posicao]->NOMEt);
+
+    printf("Digite a especie do paciente: \n");
+    fgets(pacientes[posicao]->ESPECIE, sizeof(pacientes[posicao]->ESPECIE), stdin);
+    removerNovaLinha(pacientes[posicao]->ESPECIE);
+
+    printf("Digite a raca do paciente: \n");
+    fgets(pacientes[posicao]->RACA, sizeof(pacientes[posicao]->RACA), stdin);
+    removerNovaLinha(pacientes[posicao]->RACA);
+
+    printf("Digite a idade do paciente: \n");
+    scanf("%d", &pacientes[posicao]->IDADE);
+    //raca, especie telefone
+
+    printf("Paciente [%s] cadastrado com sucesso..\n", pacientes[posicao]->NOMEp);
+}
