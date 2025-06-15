@@ -1,7 +1,3 @@
-//
-// Created by aluno on 09/06/2025.
-//
-
 #ifndef PACIENTES_H
 #define PACIENTES_H
 
@@ -10,19 +6,39 @@
 #define MAX_NOMET 61
 #define MAX_RACA 61
 #define MAX_ESPECIE 50
-typedef struct paciente{
+
+typedef struct Paciente{
     int ID;
-    char NOME [MAX_NOMEP];
-    char NOME_T[MAX_NOMET];
-    char Raca[MAX_RACA];
-    char Especie [MAX_ESPECIE];
-    int Telefone;
-    int Idade;
+    char NOMEp[MAX_NOMEP];
+    char NOMEt[MAX_NOMET];
+    char RACA[MAX_RACA];
+    char ESPECIE[MAX_ESPECIE];
+    int TELEFONE;
+    int IDADE;
 }paciente;
 
+//Define um tipo 'p_paci'  como um ponteiro para a struct Paciente
 typedef paciente *p_paci;
 
-extern p_paci Pacientes [MAX_Pacientes];
+extern p_paci pacientes[MAX_Pacientes];
 
+//Inicializar o vetor com todas as posições nulas, para não ocupar memória
+void inicializaPacientes();
+
+//Cadastrar paciente
+void cadastrarPaciente();
+
+//Consultar paciente já cadastrado por ID
+void consultarPacienteID();
+
+//Consultar pelo nome
+void consultarPacienteNome();
+
+//Alterar dados do paciente
+void alterarDadosPaciente();
+
+//Imprimir todos os dados dos pacientes ou somente de um
+void visualizarTodosPacientes();
+void visualizarUmPaciente();
 
 #endif //PACIENTES_H
