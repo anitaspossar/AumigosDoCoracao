@@ -37,8 +37,9 @@ int main(void) {
         printf("Programa finalizado\n");
         return 0;
     }
+}
 
-    void exbirMenu();{
+    void exibirMenu(){
         printf("\nMenu Principal\n");
         printf("1. Cadastrar Novo Paciente\n");
         printf("2. Consultar Paciente por ID\n");
@@ -48,9 +49,7 @@ int main(void) {
         printf("Escolha sua opcao:\n");
     }
 
-    void PausarParaContinuar();
-    {
-        printf("\nPrecione uma tecla para continuar...\n");
+    void PausarParaContinuar(){
+        printf("\nPressione uma tecla para continuar...\n");
         getchar();
     }
-}
