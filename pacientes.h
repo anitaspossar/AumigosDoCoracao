@@ -10,11 +10,11 @@
 typedef struct Paciente{
     int ID;
     char NOMEp[MAX_NOMEP];
-    char NOMEt[MAX_NOMET];
-    char RACA[MAX_RACA];
-    char ESPECIE[MAX_ESPECIE];
-    int TELEFONE;
     int IDADE;
+    char NOMEt[MAX_NOMET];
+    char ESPECIE[MAX_ESPECIE];
+    char RACA[MAX_RACA];
+    int TELEFONE;
 }paciente;
 
 //Define um tipo 'p_paci'  como um ponteiro para a struct Paciente
@@ -28,11 +28,12 @@ void inicializaPacientes();
 //Cadastrar paciente
 void cadastrarPaciente();
 
-//Consultar paciente já cadastrado por ID
+//Consultar paciente
 void consultarPacienteID();
-
-//Consultar pelo nome
 void consultarPacienteNome();
+void consultarPacienteEspecie();
+void consultarPacienteRaca();
+void consultarPacienteTutor();
 
 //Alterar dados do paciente
 void alterarDadosPaciente();
@@ -41,4 +42,15 @@ void alterarDadosPaciente();
 void visualizarTodosPacientes();
 void visualizarUmPaciente();
 
+void exibirMenu();
+
+void PausarParaContinuar();
+
+void exibirMenu();
+
+void PausarParaContinuar();
+
+void exibirMenu();
+
+void PausarParaContinuar();
 #endif //PACIENTES_H
