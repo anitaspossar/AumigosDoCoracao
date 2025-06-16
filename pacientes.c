@@ -123,7 +123,7 @@ void consultarPacienteNome() {
     limparBufferEntrada();
 
     printf("Digite o nome(ou parte do nome) a ser encontrado: \n");
-        fgets(nomeBusca, sizeof(nomeBusca), stdin);
+    fgets(nomeBusca, sizeof(nomeBusca), stdin);
     removerNovaLinha(nomeBusca);
 
     if(strlen(nomeBusca)==0) {
@@ -138,10 +138,10 @@ void consultarPacienteNome() {
             }
         }
     }
-
-    void consultarPacienteEspecie() {
+}
+    void consultarPacienteEspecie(){
         char especieBusca[MAX_ESPECIE];
-        int achado = 0;
+        int encontrado = 0;
         limparBufferEntrada();
 
         printf("Digite para consultar os pacientes pela raça");
@@ -155,7 +155,7 @@ void consultarPacienteNome() {
         for(int i=0; i<MAX_Pacientes; i++) {
             if(strstr(pacientes[i]->ESPECIE, especieBusca) != NULL) {
                 exibirDadosPaciente(pacientes[i]);
-                achado++;
+                encontrado++;
             }
         }
     }
@@ -163,5 +163,6 @@ void consultarPacienteNome() {
     void consultarPacienteRaca() {
 
     }
-    void consultarPacienteTutor();
+
+    void consultarPacienteTutor(){
 }
