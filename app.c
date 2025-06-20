@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
+#include "pacientes.h"
 
 void exibirMenu();
 
@@ -13,27 +12,36 @@ int main(void) {
         scanf("%d",&opcao);
         switch (opcao) {
             case 1:
-                printf("cadastro");
+                cadastrarPaciente();
             break;
             case 2:
-                printf("consulta sadisgraca");
+                consultarPacienteID();
             break;
             case 3:
-                printf("consulta pela desgraca do nome");
+                consultarPacienteNome();
             break;
             case 4:
-                printf("altera tudo cadela");
+                consultarPacienteEspecie();
             break;
             case 5:
+                consultarPacienteRaca();
+            break;
+            case 6:
+                alterarDadosPaciente();
+            break;
+            case 7:
+                visualizarTodosPacientes();
+            break;
+            case 8:
                 printf("Encerrando Sistema\n");
             break;
             default:
                 printf("Opcao invalida\n");
         }
-        if (opcao == 5) {
+        if (opcao == 8) {
             PausarParaContinuar();
         }
-    }while (opcao != 5);{
+    }while (opcao != 8);{
         printf("Programa finalizado\n");
         return 0;
     }
@@ -44,8 +52,11 @@ int main(void) {
         printf("1. Cadastrar Novo Paciente\n");
         printf("2. Consultar Paciente por ID\n");
         printf("3. Consultar Paciente por Nome\n");
-        printf("4. Alterar Dados do Paciente\n");
-        printf("5. Sair do sistema\n");
+        printf("4. Consultar Paciente pela Especie\n");
+        printf("5. Consultar Paciente pela Raca\n");
+        printf("6. Alterar Dados do Paciente\n");
+        printf("7. Visualizar todos os pacientes cadastrados\n");
+        printf("8. Sair do sistema\n");
         printf("Escolha sua opcao:\n");
     }
 
