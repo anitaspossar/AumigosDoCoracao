@@ -14,7 +14,7 @@ typedef struct Paciente{
     char NOMEt[MAX_NOMET];
     char ESPECIE[MAX_ESPECIE];
     char RACA[MAX_RACA];
-    int TELEFONE;
+    double TELEFONE;
 }paciente;
 
 //Define um tipo 'p_paci'  como um ponteiro para a struct Paciente
@@ -25,6 +25,9 @@ extern p_paci pacientes[MAX_Pacientes];
 //Inicializar o vetor com todas as posições nulas, para não ocupar memória
 void inicializaPacientes();
 
+//Exibir dados dos pacientes
+void exibirDadosPaciente();
+
 //Cadastrar paciente
 void cadastrarPaciente();
 
@@ -33,22 +36,11 @@ void consultarPacienteID();
 void consultarPacienteNome();
 void consultarPacienteEspecie();
 void consultarPacienteRaca();
-void consultarPacienteTutor();
 
 //Alterar dados do paciente
 void alterarDadosPaciente();
 
-//Imprimir todos os dados dos pacientes ou somente de um
 void visualizarTodosPacientes();
-void visualizarUmPaciente();
-
-void exibirMenu();
-
-void PausarParaContinuar();
-
-void exibirMenu();
-
-void PausarParaContinuar();
 
 void exibirMenu();
 
