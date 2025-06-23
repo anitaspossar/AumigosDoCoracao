@@ -24,13 +24,13 @@ void removerNovaLinha(char * str){
 static int contador = 0;
 
 void inicializar_gerador() {
-    srand(time(NULL) ^ getpid()); // Semente com tempo + PID do processo
+    srand(time(NULL) ^ getpid());
 }
 
 long gerar_id_unico() {
-    long id = time(NULL);          // Parte 1: Timestamp
-    id = (id << 16) | (rand() % 0xFFFF); // Parte 2: Aleatoriedade
-    id = (id << 16) | (++contador % 0xFFFF); // Parte 3: Contador
+    long id = time(NULL);
+    id = (id << 16) | (rand() % 0xFFFF); 
+    id = (id << 16) | (++contador % 0xFFFF); 
     return id;
 }
 
