@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+#include <time.h>
 
 //Definicao do array global para ponteiro de pacientes
 p_paci pacientes[MAX_Pacientes];
@@ -19,13 +21,26 @@ void removerNovaLinha(char * str){
     }
 }
 
+static int contador = 0;
+
+void inicializar_gerador() {
+    srand(time(NULL) ^ getpid()); // Semente com tempo + PID do processo
+}
+
+long gerar_id_unico() {
+    long id = time(NULL);          // Parte 1: Timestamp
+    id = (id << 16) | (rand() % 0xFFFF); // Parte 2: Aleatoriedade
+    id = (id << 16) | (++contador % 0xFFFF); // Parte 3: Contador
+    return id;
+}
+
 void exibirDadosPaciente(paciente *p_a){
     if (p_a == NULL) {
         printf("Referencia de paciente nula... \n");
         return;
     }
     printf("\n-----------------------------\n");
-    printf("ID: %d \n", p_a->ID);
+    printf("ID: %ld \n", p_a->ID);
     printf("Nome Paciente: %s \n", p_a->NOMEp);
     printf("Idade do paciente: %d \n", p_a->IDADE);
     printf("Nome Tutor: %s \n", p_a->NOMEt);
@@ -43,6 +58,9 @@ void inicializaPacientes(){
 
 //cadastrar novo paciente
 void cadastrarPaciente(){
+
+    FILE *p_aq = fopen("C:\\Users\\anita\\CLionProjects\\LPM\\ClinicaAumigosdoCoracao\\Pacientes.txt", "a");
+
     int i = 0;
     int posicao = -1;
     for (i=0; i<MAX_Pacientes;i++) {
@@ -62,10 +80,11 @@ void cadastrarPaciente(){
         return;
     }
 
-    printf("Cadastrando novo paciente na posicao %d. \n", posicao);
+    inicializar_gerador();
+
     //Leitura do id
-    printf("Digite o numero do ID do paciente: \n");
-    scanf("%d", &pacientes[posicao]->ID);
+    pacientes[posicao]->ID = gerar_id_unico();
+    printf("Numero do ID gerado: %.0ld \n", pacientes[posicao]->ID);
     limparBufferEntrada();
 
     printf("Digite o nome do paciente: \n");
@@ -93,10 +112,18 @@ void cadastrarPaciente(){
     scanf("%lf", &pacientes[posicao]->TELEFONE);
     limparBufferEntrada();
 
+    fprintf(p_aq, "%.0ld;%s;%s;%s;%d;%s;%.0lf;",
+        pacientes[posicao]->ID,
+        pacientes[posicao]->NOMEp,
+        pacientes[posicao]->ESPECIE ,
+        pacientes[posicao]->RACA,
+        pacientes[posicao]->IDADE,
+        pacientes[posicao]->NOMEt ,
+        pacientes[posicao]->TELEFONE);
+    fprintf(p_aq, "\n");
     printf("Paciente [%s] cadastrado com sucesso..\n", pacientes[posicao]->NOMEp);
 }
 
-//consultar um paciente por ID
 void consultarPacienteID(){
     int encontrado = 0;
     int idBusca;

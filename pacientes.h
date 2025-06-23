@@ -8,7 +8,7 @@
 #define MAX_ESPECIE 50
 
 typedef struct Paciente{
-    int ID;
+    long ID;
     char NOMEp[MAX_NOMEP];
     int IDADE;
     char NOMEt[MAX_NOMET];

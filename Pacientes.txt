@@ -1,5 +1,3 @@
-55599785033;Lady Gaga;Gato;SRD;1ano;Silvana Franco;199864575;
-55189603741;Pitoco;Cachorro;5ano;Husky Siberiano;Franca Oliveira;11894598;
-15963025871;Sebastian;Hamster;Hamster Sírio;2ano;Isabella Prieto;19981634761;
-58996304521;Domenica;Cachorro;Labrador;60ano;Pricilão Kanokurto; 8569247856;
-78954621301;Negresco;Cachorro;Cavoodle;1ano;Anita Possar;19981915851;
+325779457;Pitoco;Cachorro;Poodle;12;Isabella Prieto;19985642845;
+1070792705;Pitoca;Gato;Sphynx;24;Anita Possar;19981915851;
+2139226113;Peteco;Cachorro;Pinscher;48;Henrique Lima;19965585157;

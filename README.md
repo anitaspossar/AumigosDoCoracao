@@ -7,7 +7,6 @@ Trazendo rapidez e facilidade, é um programa essencial para a rotina administra
 
 ## 🐾 Sobre o App
 - **Funções:** Cadastrar pacientes,
-- 
 
 
 ## 🚀 Tecnologias Utilizadas
@@ -22,3 +21,5 @@ Trazendo rapidez e facilidade, é um programa essencial para a rotina administra
 2. **Abra o código na IDE CLion**
 
 3. **Compile e execute os arquivos C**
+
+
