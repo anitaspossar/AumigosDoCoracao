@@ -121,6 +121,9 @@ void cadastrarPaciente(){
         pacientes[posicao]->NOMEt ,
         pacientes[posicao]->TELEFONE);
     fprintf(p_aq, "\n");
+
+    fclose(p_aq);
+    
     printf("Paciente [%s] cadastrado com sucesso..\n", pacientes[posicao]->NOMEp);
 }
 
