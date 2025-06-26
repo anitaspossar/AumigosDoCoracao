@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "pacientes.h"
 
 void exibirMenu();
@@ -6,9 +7,27 @@ void exibirMenu();
 void PausarParaContinuar();
 
 int main(void) {
+
+    exibirMenu();
+}
+
+void exibirMenu(){
+
     int opcao = 0;
     do {
-        exibirMenu();
+        printf("\nMenu Principal\n");
+        printf("\nAVISO: Para salvar as informacoes no arquivo \npressione 8 para sair do sistema.\n");
+        printf("\n_______________________________________________\n");
+        printf("1. Cadastrar Novo Paciente\n");
+        printf("2. Consultar Paciente por ID\n");
+        printf("3. Consultar Paciente por Nome\n");
+        printf("4. Consultar Paciente pela Especie\n");
+        printf("5. Consultar Paciente pela Raca\n");
+        printf("6. Alterar Dados do Paciente\n");
+        printf("7. Visualizar todos os pacientes cadastrados\n");
+        printf("8. Sair do sistema\n");
+        printf("_______________________________________________\n");
+        printf("Escolha sua opcao:\n");
         scanf("%d",&opcao);
         switch (opcao) {
             case 1:
@@ -43,21 +62,8 @@ int main(void) {
         }
     }while (opcao != 8);{
         printf("Programa finalizado\n");
-        return 0;
+        exit(0);
     }
-}
-
-void exibirMenu(){
-    printf("\nMenu Principal\n");
-    printf("1. Cadastrar Novo Paciente\n");
-    printf("2. Consultar Paciente por ID\n");
-    printf("3. Consultar Paciente por Nome\n");
-    printf("4. Consultar Paciente pela Especie\n");
-    printf("5. Consultar Paciente pela Raca\n");
-    printf("6. Alterar Dados do Paciente\n");
-    printf("7. Visualizar todos os pacientes cadastrados\n");
-    printf("8. Sair do sistema\n");
-    printf("Escolha sua opcao:\n");
 }
 
 void PausarParaContinuar(){
