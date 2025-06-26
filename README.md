@@ -5,24 +5,23 @@
 Sistema completo para gerenciamento de pacientes (animais) em clínicas veterinárias, desenvolvido em C puro. Oferece cadastro, consultas personalizadas e edição de dados, com armazenamento persistente em arquivo.
 
 ## 🐾 Funcionalidades
-- **Cadastrar Novo Paciente**
+- **Cadastrar Novo Paciente**:
 Registra nome, espécie, raça, idade, tutor e contato.
-
 ID único gerado automaticamente (evita duplicatas).
 
-- **Consultar Paciente por ID**
+- **Consultar Paciente por ID**:
 Busca pelo ID gerado pelo sistema.
 
-- **Consultar Paciente por Nome**
+- **Consultar Paciente por Nome**:
 Busca exata (case-sensitive).
 
-- **Consultar por Espécie ou Raça**
+- **Consultar por Espécie ou Raça**:
 Filtra por espécie (ex: "Felino") ou raça (ex: "Persa").
 
-- **Alterar Dados do Paciente**
+- **Alterar Dados do Paciente**:
 Edita todas as informações exceto o ID (imutável).
 
-- **Visualizar Todos os Pacientes**
+- **Visualizar Todos os Pacientes**:
 Lista ordenada por ID, nome ou espécie.
 
 ## ⚙️ Geração Automática de ID
