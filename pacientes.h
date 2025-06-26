@@ -6,6 +6,7 @@
 #define MAX_NOMET 61
 #define MAX_RACA 61
 #define MAX_ESPECIE 50
+#define MAX_TELEFONE 50
 
 typedef struct Paciente{
     long ID;
@@ -14,7 +15,7 @@ typedef struct Paciente{
     char NOMEt[MAX_NOMET];
     char ESPECIE[MAX_ESPECIE];
     char RACA[MAX_RACA];
-    double TELEFONE;
+    char TELEFONE[MAX_TELEFONE];
 }paciente;
 
 //Define um tipo 'p_paci'  como um ponteiro para a struct Paciente
@@ -22,6 +23,7 @@ typedef paciente *p_paci;
 
 extern p_paci pacientes[MAX_Pacientes];
 
+void limparBufferEntrada();
 //Inicializar o vetor com todas as posições nulas, para não ocupar memória
 void inicializaPacientes();
 
