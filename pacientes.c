@@ -122,27 +122,54 @@ void cadastrarPaciente(){
     fprintf(p_aq, "\n");
 
     printf("Paciente [%s] cadastrado com sucesso..\n", pacientes[posicao]->NOMEp);
+
+    exibirMenu();
 }
 
 void consultarPacienteID(){
     int encontrado = 0;
-    int idBusca;
+    long idBusca;
+
     printf("Digite o ID do paciente procurado: \n");
     scanf("%d", &idBusca);
     limparBufferEntrada();
 
-    for (int i=0; i<MAX_Pacientes; i++) {
-        if (pacientes[i] != NULL) {
-            if (pacientes[i]->ID == idBusca) {
-                printf("Paciente encontrado \n");
-                exibirDadosPaciente(pacientes[i]);
-                encontrado = 1;
-                break;
-            }
-        }
+    FILE *arquivo = fopen("C:\\Users\\anita\\CLionProjects\\LPM\\ClinicaAumigosdoCoracao\\Pacientes.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de pacientes.\n");
+        return;
     }
-    if (!encontrado) {
-        printf("Paciente nao encontrado...\n");
+
+    for (int i = 0; i < MAX_Pacientes; i++) {
+        char linha[512];
+        fgets(linha, sizeof(linha), arquivo);
+
+        char *id = strtok(linha, ";");
+        char *nome = strtok(NULL, ";");
+        char *especie = strtok(NULL, ";");
+        char *raca = strtok(NULL, ";");
+        char *idade = strtok(NULL, ";");
+        char *tutor = strtok(NULL, ";");
+        char *telefone = strtok(NULL, ";\n");
+
+        pacientes[i] = (paciente*) malloc(sizeof(paciente));
+        pacientes[i]->ID = atol(id);
+        strncpy(pacientes[i]->NOMEp, nome, MAX_NOMEP);
+        strncpy(pacientes[i]->ESPECIE, especie, MAX_ESPECIE);
+        strncpy(pacientes[i]->RACA, raca, MAX_RACA);
+        pacientes[i]->IDADE = atoi(idade);
+        strncpy(pacientes[i]->NOMEt, tutor, MAX_NOMET);
+        strncpy(pacientes[i]->TELEFONE, telefone, MAX_TELEFONE);
+
+        if (pacientes[i]->ID == idBusca) {
+            exibirDadosPaciente(pacientes[i]);
+            encontrado++;
+            exibirMenu();
+        }
+        if (encontrado == 0) {
+            printf("Nenhum paciente com esse ID encontrado na memoria.\n");
+            exibirMenu();
+        }
     }
 }
 
@@ -191,11 +218,13 @@ void consultarPacienteNome() {
         if (pacientes[i] != NULL && strstr(pacientes[i]->NOMEp, nomeBusca) != NULL) {
             exibirDadosPaciente(pacientes[i]);
             encontrado++;
+            exibirMenu();
         }
     }
 
     if (!encontrado) {
         printf("Nenhum paciente com esse nome encontrado na memória.\n");
+        exibirMenu();
     }
 }
 
@@ -243,11 +272,13 @@ void consultarPacienteEspecie(){
         if (pacientes[i] != NULL && strstr(pacientes[i]->ESPECIE, especieBusca) != NULL) {
             exibirDadosPaciente(pacientes[i]);
             encontrado++;
+            exibirMenu();
         }
     }
 
     if (!encontrado) {
         printf("Nenhum paciente com esse nome encontrado na memória.\n");
+        exibirMenu();
     }
 }
 
@@ -295,11 +326,13 @@ void consultarPacienteRaca() {
         if (pacientes[i] != NULL && strstr(pacientes[i]->RACA, racaBusca) != NULL) {
             exibirDadosPaciente(pacientes[i]);
             encontrado++;
+            exibirMenu();
         }
     }
 
     if (!encontrado) {
         printf("Nenhum paciente com esse nome encontrado na memória.\n");
+        exibirMenu();
     }
 }
 
@@ -413,21 +446,43 @@ void alterarDadosPaciente()
 void visualizarTodosPacientes(){
     int contador = 0;
 
-    FILE *arquivo = fopen("C:\\Users\\anita\\CLionProjects\\LPM\\ClinicaAumigosdoCoracao\\Pacientes.txt", "r");
-    if (arquivo == NULL) {
+    FILE *p_arq = fopen("C:\\Users\\anita\\CLionProjects\\LPM\\ClinicaAumigosdoCoracao\\Pacientes.txt", "r");
+    if (p_arq == NULL) {
         printf("Erro ao abrir o arquivo de pacientes.\n");
         return;
     }
 
-    for (int i=0; i<MAX_Pacientes; i++) {
-        if (pacientes[i] != NULL) {
-            contador++;
-            exibirDadosPaciente(pacientes[i]);
-        }
+    for (int i = 0; i < MAX_Pacientes; i++) {
+        char linha[512];
+        fgets(linha, sizeof(linha), p_arq);
+
+        char *id = strtok(linha, ";");
+        char *nome = strtok(NULL, ";");
+        char *especie = strtok(NULL, ";");
+        char *raca = strtok(NULL, ";");
+        char *idade = strtok(NULL, ";");
+        char *tutor = strtok(NULL, ";");
+        char *telefone = strtok(NULL, ";\n");
+
+        pacientes[i] = (paciente*) malloc(sizeof(paciente));
+        pacientes[i]->ID = atol(id);
+        strncpy(pacientes[i]->NOMEp, nome, MAX_NOMEP);
+        strncpy(pacientes[i]->ESPECIE, especie, MAX_ESPECIE);
+        strncpy(pacientes[i]->RACA, raca, MAX_RACA);
+        pacientes[i]->IDADE = atoi(idade);
+        strncpy(pacientes[i]->NOMEt, tutor, MAX_NOMET);
+        strncpy(pacientes[i]->TELEFONE, telefone, MAX_TELEFONE);
+
+
+        exibirDadosPaciente(pacientes[i]);
+        contador++;
     }
-    if (contador == 0) {
-        printf("Nenhum paciente cadastrado \n");
-    }else {
+
+    if (contador != 0) {
         printf("Qtd. de pacientes atualmente cadastrados: %d \n", contador);
+        exibirMenu();
+    }else {
+        printf("Nenhum paciente cadastrado \n");
+        exibirMenu();
     }
 }
