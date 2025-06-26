@@ -47,20 +47,20 @@ int main(void) {
     }
 }
 
-    void exibirMenu(){
-        printf("\nMenu Principal\n");
-        printf("1. Cadastrar Novo Paciente\n");
-        printf("2. Consultar Paciente por ID\n");
-        printf("3. Consultar Paciente por Nome\n");
-        printf("4. Consultar Paciente pela Especie\n");
-        printf("5. Consultar Paciente pela Raca\n");
-        printf("6. Alterar Dados do Paciente\n");
-        printf("7. Visualizar todos os pacientes cadastrados\n");
-        printf("8. Sair do sistema\n");
-        printf("Escolha sua opcao:\n");
-    }
+void exibirMenu(){
+    printf("\nMenu Principal\n");
+    printf("1. Cadastrar Novo Paciente\n");
+    printf("2. Consultar Paciente por ID\n");
+    printf("3. Consultar Paciente por Nome\n");
+    printf("4. Consultar Paciente pela Especie\n");
+    printf("5. Consultar Paciente pela Raca\n");
+    printf("6. Alterar Dados do Paciente\n");
+    printf("7. Visualizar todos os pacientes cadastrados\n");
+    printf("8. Sair do sistema\n");
+    printf("Escolha sua opcao:\n");
+}
 
-    void PausarParaContinuar(){
-        printf("\nPressione uma tecla para continuar...\n");
-        getchar();
-    }
+void PausarParaContinuar(){
+    printf("\nPressione uma tecla para continuar...\n");
+    getchar();
+}
