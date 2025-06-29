@@ -54,5 +54,7 @@ ID|Nome|Espécie|Raça|Idade|Tutor|Contato
    "https://github.com/anitaspossar/AumigosDoCoracao.git"
 
 2. **Abra o código na IDE CLion (ou qualquer outra IDE que você esteja acostumado)**
+
 3. **IMPORTANTE: Dentro do arquivo pacientes.c mude o caminho do arquivo const char ARQUIVO_PACIENTES = "C:\\Users\\anita\\CLionProjects\\ProjetoMaromo\\ClinicaAumigosdoCoracao\\pacientes.txt"; para o caminho do arquivo em sua máquina**
-4.**Compile e execute os arquivos C**
+
+4.  4.**Compile e execute os arquivos C**
