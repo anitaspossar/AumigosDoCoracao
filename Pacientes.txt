@@ -1,4 +1,0 @@
-325779457;Pitoco;Cachorro;Poodle;12;Isabella Prieto;19985642845;
-1070792705;Pitoca;Gato;Sphynx;24;Anita Possar;19981915851;
-2139226113;Peteco;Cachorro;Pinscher;48;Henrique Lima;19965585157;
-1073086465;Peteco;Gato;Siames;52;Xepa;19985684841;
