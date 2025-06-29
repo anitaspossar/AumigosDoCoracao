@@ -14,7 +14,6 @@ void exibirMenu() {
     int opcao;
     do {
         printf("\nMenu Principal\n");
-        printf("\nAVISO: Para salvar as informacoes no arquivo \npressione 8 para sair do sistema.\n");
         printf("\n_______________________________________________\n");
         printf("1. Cadastrar Novo Paciente\n");
         printf("2. Consultar Paciente por ID\n");
