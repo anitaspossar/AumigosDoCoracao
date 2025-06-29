@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.28.1)
-project(untitled4 C)
+cmake_minimum_required(VERSION 3.28)
+project(ClinicaAumigosdoCoracao C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(untitled4 pacientes.c
-        pacientes.h
-        app.c)
+add_executable(ClinicaAumigosdoCoracao app.c
+        pacientes.c
+        pacientes.h)

@@ -5,24 +5,24 @@
 Sistema completo para gerenciamento de pacientes (animais) em clínicas veterinárias, desenvolvido em C puro. Oferece cadastro, consultas personalizadas e edição de dados, com armazenamento persistente em arquivo.
 
 ## 🐾 Funcionalidades
-- **Cadastrar Novo Paciente**:
-Registra nome, espécie, raça, idade, tutor e contato.
-ID único gerado automaticamente (evita duplicatas).
+- **Cadastrar Novo Paciente**
+  Registra nome, espécie, raça, idade, tutor e contato.
+  ID único gerado automaticamente (evita duplicatas).
 
-- **Consultar Paciente por ID**:
-Busca pelo ID gerado pelo sistema.
+- **Consultar Paciente por ID**
+  Busca pelo ID gerado pelo sistema.
 
-- **Consultar Paciente por Nome**:
-Busca exata (case-sensitive).
+- **Consultar Paciente por Nome**
+  Busca exata (case-sensitive).
 
-- **Consultar por Espécie ou Raça**:
-Filtra por espécie (ex: "Felino") ou raça (ex: "Persa").
+- **Consultar por Espécie ou Raça**
+  Filtra por espécie (ex: "Felino") ou raça (ex: "Persa").
 
-- **Alterar Dados do Paciente**:
-Edita todas as informações exceto o ID (imutável).
+- **Alterar Dados do Paciente**
+  Edita todas as informações exceto o ID (imutável).
 
-- **Visualizar Todos os Pacientes**:
-Lista ordenada por ID, nome ou espécie.
+- **Visualizar Todos os Pacientes**
+  Lista ordenada por ID, nome ou espécie.
 
 ## ⚙️ Geração Automática de ID
 O sistema atribui um ID sequencial (ex: 1, 2, 3...) ou baseado em timestamp (ex: 202406283).
@@ -54,5 +54,5 @@ ID|Nome|Espécie|Raça|Idade|Tutor|Contato
    "https://github.com/anitaspossar/AumigosDoCoracao.git"
 
 2. **Abra o código na IDE CLion (ou qualquer outra IDE que você esteja acostumado)**
-
-3. **Compile e execute os arquivos C**
+3. **IMPORTANTE: Dentro do arquivo pacientes.c mude o caminho do arquivo const char ARQUIVO_PACIENTES = "C:\\Users\\anita\\CLionProjects\\ProjetoMaromo\\ClinicaAumigosdoCoracao\\pacientes.txt"; para o caminho do arquivo em sua máquina**
+4.**Compile e execute os arquivos C**
