@@ -1,15 +1,45 @@
+/**
+ * @file app.c
+ * @brief Aplicação principal da clínica veterinária
+ * @author Isabella,Anita,Henrique,Pablo
+ * @date 2025-06-29
+ *
+ * Contém o loop principal do programa e a interface de menu.
+ */
+
 #include <stdio.h>
 #include "pacientes.h"
 
 void exibirMenu();
 void PausarParaContinuar();
 
+/**
+ * @brief Função principal
+ *
+ * @return int Código de saída (0 para sucesso)
+ *
+ * @note Inicializa o sistema e entra no loop do menu
+ */
 int main() {
     inicializaPacientes();
     exibirMenu();
     return 0;
 }
 
+/**
+ * @brief Exibe o menu principal e gerencia o fluxo
+ *
+ * @details Mostra as opções disponíveis e redireciona para
+ * as funções específicas do módulo pacientes.
+ *
+ * Fluxo:
+ * 1. Exibe menu
+ * 2. Processa escolha
+ * 3. Executa operação
+ * 4. Repete até saída
+ *
+ * Chamado automaticamente pela main()
+ */
 void exibirMenu() {
     int opcao;
     do {

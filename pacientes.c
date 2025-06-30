@@ -1,3 +1,13 @@
+/**
+* @file pacientes.c
+ * @brief Implementação do sistema de gerenciamento de pacientes
+ * @author Isabella,Anita,Henrique,Pablo
+ * @date 2025-06-29
+ *
+ * Contém a implementação completa de todas as funções declaradas
+ * no arquivo pacientes.h, com manipulação de arquivos e memória.
+ */
+
 #include "pacientes.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -5,10 +15,13 @@
 #include <time.h>
 
 
-p_paci pacientes[MAX_Pacientes];
-int totalPacientes = 0;
+p_paci pacientes[MAX_Pacientes]; ///< Array global de ponteiros para pacientes
+int totalPacientes = 0;          ///< Contador atual de pacientes cadastrados
+
+/// Atribuição do caminho para do TXT para uma variável para mais facilidade
 const char *ARQUIVO_PACIENTES = "C:\\Users\\anita\\CLionProjects\\ProjetoMaromo\\ClinicaAumigosdoCoracao\\pacientes.txt";
 
+/* [Funções auxiliares já documentadas no .h] */
 void limparBufferEntrada() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
@@ -28,6 +41,23 @@ void inicializaPacientes() {
     carregarPacientesDoArquivo();
 }
 
+/**
+ * @brief Gera um ID único e aleatório de 9 dígitos
+ * @return long ID no intervalo 100.000.000 - 999.999.999
+ *
+ * Implementação:
+ * 1. Inicializa o gerador de números aleatórios na primeira chamada (seed baseada no tempo)
+ * 2. Gera um número no intervalo [100.000.000, 999.999.999]
+ *
+ * Características:
+ * - Garante 9 dígitos fixos
+ * - Baixa probabilidade de colisão (1 em 900 milhões)
+ * - Não é criptograficamente seguro
+ *
+ * Exemplo de uso:
+ * long novo_id = gerar_id_unico();
+ * printf("ID Gerado: %ld", novo_id);
+ */
 long gerar_id_unico() {
     static int inicializado = 0;
     if (!inicializado) {
@@ -37,6 +67,13 @@ long gerar_id_unico() {
     return 100000000 + (rand() % 900000000); // Entre 100.000.000 e 999.999.999
 }
 
+/*
+ * @brief Exibe os dados completos de um paciente
+ * Ponteiro para o paciente (NULL-safe)
+ *
+ * @warning Exibe mensagem de erro se ponteiro for NULL
+ * @note Formatação consistente com bordas visuais
+ */
 void exibirDadosPaciente(paciente *p_a) {
     if (p_a == NULL) {
         printf("Paciente não encontrado.\n");
@@ -53,6 +90,17 @@ void exibirDadosPaciente(paciente *p_a) {
     printf("-----------------------------\n");
 }
 
+/* ----------------- PERSISTÊNCIA ----------------- */
+
+/**
+ * @brief Salva todos os pacientes no arquivo TXT
+ *
+ * Formato do arquivo:
+ * ID;Nome;Especie;Raça;Idade;Tutor;Telefone;\n
+ *
+ * @warning Sobrescreve o arquivo completamente a cada operação
+ * Imprime mensagem de erro se falhar ao abrir arquivo
+ */
 void salvarPacientesNoArquivo() {
     FILE *arquivo = fopen(ARQUIVO_PACIENTES, "w");
     if (arquivo == NULL) {
@@ -75,6 +123,18 @@ void salvarPacientesNoArquivo() {
     fclose(arquivo);
 }
 
+/**
+ * @brief Carrega pacientes do arquivo TXT para memória
+ *
+ * @details Processamento:
+ * 1. Abre arquivo em modo leitura
+ * 2. Passa por cada linha usando strtok()
+ * 3. Aloca memória para cada paciente
+ * 4. Adiciona ao array global
+ *
+ * @note Cria arquivo novo se não existir
+ * @warning Faz validação básica de campos
+ */
 void carregarPacientesDoArquivo() {
     FILE *arquivo = fopen(ARQUIVO_PACIENTES, "r");
     if (arquivo == NULL) {
@@ -141,6 +201,24 @@ void carregarPacientesDoArquivo() {
     fclose(arquivo);
 }
 
+/* ----------------- OPERAÇÕES FUNDAMENTAIS ----------------- */
+
+/**
+ * @brief Cadastra um novo paciente no sistema
+ *
+ * Fluxo completo:
+ * 1. Valida capacidade máxima
+ * 2. Coleta dados interativamente
+ * 3. Aloca memória
+ * 4. Adiciona ao array
+ * 5. Persiste no arquivo
+ *
+ * @warning Mensagens de erro para:
+ * - Limite excedido
+ * - Falha de alocação
+ *
+ * Atualiza arquivo imediatamente após cadastro
+ */
 void cadastrarPaciente() {
     if (totalPacientes >= MAX_Pacientes) {
         printf("Limite máximo de pacientes atingido!\n");
@@ -189,6 +267,11 @@ void cadastrarPaciente() {
     printf("Paciente cadastrado com sucesso!\n");
 }
 
+/**
+ * @brief Consulta paciente por ID(long)
+ *
+ * Realiza busca linear no array de pacientes
+ */
 void consultarPacienteID() {
     long id;
     printf("Digite o ID: ");
@@ -204,6 +287,11 @@ void consultarPacienteID() {
     printf("Paciente não encontrado!\n");
 }
 
+/**
+ * @brief Consulta paciente por Nome(string)
+ *
+ * Realiza busca linear no array de pacientes
+ */
 void consultarPacienteNome() {
     char nome[MAX_NOMEP];
     printf("Digite o nome (ou parte): ");
@@ -222,6 +310,11 @@ void consultarPacienteNome() {
     }
 }
 
+/**
+ * @brief Consulta paciente por Especie(string)
+ *
+ * Realiza busca linear no array de pacientes
+ */
 void consultarPacienteEspecie() {
     char especie[MAX_ESPECIE];
     printf("Digite a espécie: ");
@@ -240,6 +333,11 @@ void consultarPacienteEspecie() {
     }
 }
 
+/**
+ * @brief Consulta paciente por Raca(string)
+ *
+ * Realiza busca linear no array de pacientes
+ */
 void consultarPacienteRaca() {
     char raca[MAX_RACA];
     printf("Digite a raça: ");
@@ -258,6 +356,30 @@ void consultarPacienteRaca() {
     }
 }
 
+/**
+ * @brief Edita os dados de um paciente existente
+ *
+ * Essa função permite mudar as informações de um animal já cadastrado.
+ *
+ * Como funciona:
+ * 1. Pede o número de ID do paciente
+ * 2. Procura o paciente no sistema
+ * 3. Se achar, mostra os dados atuais
+ * 4. Pergunta cada informação que pode ser alterada
+ *    - Se apertar ENTER sem digitar nada, mantém o valor antigo
+ * 5. Salva as mudanças no arquivo
+ *
+ * Exemplo de uso:
+ * > Digite o ID do paciente: 123456789
+ * > (Mostra os dados atuais)
+ * > Novo nome [Rex]:
+ * > (Se apertar ENTER, continua "Rex")
+ *
+ * @warning Atenção:
+ * - O ID não pode ser alterado
+ * - As mudanças são salvas automaticamente
+ * - Se digitar errado, não tem como desfazer!
+ */
 void alterarDadosPaciente() {
     long id;
     printf("Digite o ID do paciente: ");
@@ -328,27 +450,37 @@ void alterarDadosPaciente() {
     printf("Dados atualizados com sucesso!\n");
 }
 
+/**
+ * @brief Exclui paciente do sistema
+ *
+ * @details Operação IRREVERSÍVEL que:
+ * 1. Libera memória alocada
+ * 2. Reorganiza o array
+ * 3. Atualiza o arquivo
+ *
+ * Arquivo atualizado imediatamente
+ */
 void excluirPaciente() {
     long id;
     printf("Digite o ID do paciente a excluir: ");
     scanf("%ld", &id);
     limparBufferEntrada();
 
-    int index = -1;
+    int cont = -1;
     for (int i = 0; i < totalPacientes; i++) {
         if (pacientes[i] != NULL && pacientes[i]->ID == id) {
-            index = i;
+            cont = i;
             break;
         }
     }
 
-    if (index == -1) {
+    if (cont == -1) {
         printf("Paciente não encontrado!\n");
         return;
     }
 
-    free(pacientes[index]);
-    for (int i = index; i < totalPacientes - 1; i++) {
+    free(pacientes[cont]);
+    for (int i = cont; i < totalPacientes - 1; i++) {
         pacientes[i] = pacientes[i + 1];
     }
     totalPacientes--;
@@ -356,6 +488,15 @@ void excluirPaciente() {
     printf("Paciente excluído com sucesso!\n");
 }
 
+/**
+ * @brief Lista todos os pacientes cadastrados
+ *
+ * @details Exibe relatório completo com:
+ * - Todos os campos de cada paciente
+ * - Contagem total
+ *
+ * @warning Mensagem de aviso se nenhum paciente cadastrado
+ */
 void visualizarTodosPacientes() {
     if (totalPacientes == 0) {
         printf("Nenhum paciente cadastrado!\n");
