@@ -24,6 +24,9 @@ Sistema completo para gerenciamento de pacientes (animais) em clínicas veterin�
 - **Visualizar Todos os Pacientes**
   Lista ordenada por ID, nome ou espécie.
 
+  - **Excluir Paciente**
+  Excluir dados de um paciente (permanentemente) do arquivo TXT.
+
 ## ⚙️ Geração Automática de ID
 O sistema atribui um ID sequencial (ex: 1, 2, 3...) ou baseado em timestamp (ex: 202406283).
 Evita erros de digitação e garante unicidade.
