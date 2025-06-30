@@ -73,7 +73,7 @@ void exibirMenu() {
                 printf("Saindo...\n");
             salvarPacientesNoArquivo();
             break;
-            default: printf("Opção inválida!\n");
+            default: printf("Opcao invalida!\n");
         }
 
         if (opcao != 9) {
