@@ -317,7 +317,7 @@ void consultarPacienteNome() {
  */
 void consultarPacienteEspecie() {
     char especie[MAX_ESPECIE];
-    printf("Digite a espécie: ");
+    printf("Digite a especie: ");
     fgets(especie, MAX_ESPECIE, stdin);
     removerNovaLinha(especie);
 
@@ -340,7 +340,7 @@ void consultarPacienteEspecie() {
  */
 void consultarPacienteRaca() {
     char raca[MAX_RACA];
-    printf("Digite a raça: ");
+    printf("Digite a raca: ");
     fgets(raca, MAX_RACA, stdin);
     removerNovaLinha(raca);
 
