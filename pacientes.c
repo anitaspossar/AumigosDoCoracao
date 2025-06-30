@@ -138,7 +138,7 @@ void salvarPacientesNoArquivo() {
 void carregarPacientesDoArquivo() {
     FILE *arquivo = fopen(ARQUIVO_PACIENTES, "r");
     if (arquivo == NULL) {
-        printf("Arquivo de pacientes não encontrado. Um novo será criado.\n");
+        printf("Arquivo de pacientes nao encontrado. Um novo sera criado.\n");
         return;
     }
 
@@ -221,7 +221,7 @@ void carregarPacientesDoArquivo() {
  */
 void cadastrarPaciente() {
     if (totalPacientes >= MAX_Pacientes) {
-        printf("Limite máximo de pacientes atingido!\n");
+        printf("Limite maximo de pacientes atingido!\n");
         return;
     }
 
@@ -284,7 +284,7 @@ void consultarPacienteID() {
             return;
         }
     }
-    printf("Paciente não encontrado!\n");
+    printf("Paciente nao encontrado!\n");
 }
 
 /**
@@ -395,7 +395,7 @@ void alterarDadosPaciente() {
     }
 
     if (index == -1) {
-        printf("Paciente não encontrado!\n");
+        printf("Paciente nao encontrado!\n");
         return;
     }
 
@@ -475,7 +475,7 @@ void excluirPaciente() {
     }
 
     if (cont == -1) {
-        printf("Paciente não encontrado!\n");
+        printf("Paciente nao encontrado!\n");
         return;
     }
 
@@ -485,7 +485,7 @@ void excluirPaciente() {
     }
     totalPacientes--;
     salvarPacientesNoArquivo();
-    printf("Paciente excluído com sucesso!\n");
+    printf("Paciente excluido com sucesso!\n");
 }
 
 /**
